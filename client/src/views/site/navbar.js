@@ -47,6 +47,19 @@ define('views/site/navbar', 'view', function (Dep) {
         },
 
         events: {
+            'click button[data-action="quick-login"]': function (e) {
+                console.log(this.getUser().get('phoneNumber'))
+                console.log("login")
+            },
+            'click button[data-action="quick-logout"]': function (e) {
+                console.log("logout")
+            },
+            'click button[data-action="quick-pause"]': function (e) {
+                console.log("pause")
+            },
+            'click button[data-action="quick-unpause"]': function (e) {
+                console.log("unpause")
+            },
             'click .navbar-collapse.in a.nav-link': function (e) {
                 var $a = $(e.currentTarget);
                 var href = $a.attr('href');
@@ -323,7 +336,7 @@ define('views/site/navbar', 'view', function (Dep) {
             if (window.Event) {
                 try {
                     window.dispatchEvent(new Event('resize'));
-                } catch (e) {}
+                } catch (e) { }
             }
         },
 
@@ -332,7 +345,7 @@ define('views/site/navbar', 'view', function (Dep) {
             if (!companyLogoId) {
                 return this.getBasePath() + (this.getThemeManager().getParam('logo') || 'client/img/logo.png');
             }
-            return this.getBasePath() + '?entryPoint=LogoImage&id='+companyLogoId;
+            return this.getBasePath() + '?entryPoint=LogoImage&id=' + companyLogoId;
         },
 
         getTabList: function () {
@@ -398,7 +411,7 @@ define('views/site/navbar', 'view', function (Dep) {
         setupQuickCreateList: function () {
             var scopes = this.getMetadata().get('scopes') || {};
 
-            this.quickCreateList = this.getQuickCreateList().filter(scope =>{
+            this.quickCreateList = this.getQuickCreateList().filter(scope => {
                 if (!scopes[scope]) {
                     return false;
                 }
@@ -474,7 +487,7 @@ define('views/site/navbar', 'view', function (Dep) {
             var $more = this.$more;
             var $moreDropdown = this.$moreDropdown;
 
-            $window.on('resize.navbar', function() {
+            $window.on('resize.navbar', function () {
                 updateWidth();
             });
 
@@ -716,7 +729,7 @@ define('views/site/navbar', 'view', function (Dep) {
                     return;
                 }
 
-                var $li = this.$el.find('li.tab[data-name="group-'+i+'"]');
+                var $li = this.$el.find('li.tab[data-name="group-' + i + '"]');
 
                 if (!$li.hasClass('open')) {
                     return;
@@ -761,7 +774,7 @@ define('views/site/navbar', 'view', function (Dep) {
                     return;
                 }
 
-                var $li = this.$el.find('li.tab[data-name="group-'+i+'"]');
+                var $li = this.$el.find('li.tab[data-name="group-' + i + '"]');
 
                 if (!$li.hasClass('open')) {
                     return;
@@ -1057,7 +1070,7 @@ define('views/site/navbar', 'view', function (Dep) {
                     link: '#User/view/' + this.getUser().id,
                     html: avatarHtml + this.getHelper().escapeString(this.getUser().get('name')),
                 },
-                {divider: true}
+                { divider: true }
             ];
 
             if (this.getUser().isAdmin()) {
@@ -1106,7 +1119,7 @@ define('views/site/navbar', 'view', function (Dep) {
             var type = this.getMetadata().get(['clientDefs', scope, 'quickCreateModalType']) || 'edit';
             var viewName = this.getMetadata().get(['clientDefs', scope, 'modalViews', type]) || 'views/modals/edit';
 
-            this.createView('quickCreate', viewName , {scope: scope}, (view) => {
+            this.createView('quickCreate', viewName, { scope: scope }, (view) => {
                 view.once('after:render', () => Espo.Ui.notify(false));
 
                 view.render();

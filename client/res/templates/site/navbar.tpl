@@ -157,6 +157,13 @@
         </ul>
         <div class="navbar-right-container">
         <ul class="nav navbar-nav navbar-right">
+            <div style="margin: 3px;">
+                <button type="button" class="btn btn-primary btn-sm" data-action="quick-login">迁入</button>
+                <button type="button" class="btn btn-primary btn-sm" data-action="quick-logout">迁出</button>
+                <button type="button" class="btn btn-primary btn-sm" data-action="quick-pause">置忙</button>
+                <button type="button" class="btn btn-primary btn-sm" data-action="quick-unpause">置闲</button>
+                <span>队列: 售后  排队:<span style="color:red;">10</span> 接听: <span style="color:green;">10</span></span>
+            </div>
             <li class="nav navbar-nav navbar-form global-search-container">
                 {{{globalSearch}}}
             </li>
