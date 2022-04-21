@@ -644,7 +644,7 @@ define(
 
             this.baseController.on('logout', () => this.logout());
         },
-
+        
         logout: function () {
             if (this.auth) {
                 let arr = Base64.decode(this.auth).split(':');

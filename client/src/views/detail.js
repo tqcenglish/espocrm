@@ -148,6 +148,7 @@ define('views/detail', 'views/main', function (Dep) {
         },
 
         handleFollowButton: function () {
+            console.log("follow")
             if (this.model.get('isFollowed')) {
                 this.addUnfollowButtonToMenu();
             }
@@ -157,7 +158,14 @@ define('views/detail', 'views/main', function (Dep) {
                 }
             }
         },
-
+        actionDialSip:function (data) {
+            console.log("call",data)
+            fetch(`http://127.0.0.1:9000/api/call?number=${data.phoneNumber}`, {
+                mode: "no-cors",
+            }).then(() => {
+                alert("呼叫成功");
+            });
+        },
         actionFollow: function () {
             this.disableMenuItem('follow');
 

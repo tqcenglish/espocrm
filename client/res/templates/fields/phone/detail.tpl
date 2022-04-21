@@ -15,6 +15,7 @@
             {{#if type}}
             <span class="text-muted small">{{translateOption type scope=../scope field=../name}}</span>
             {{/if}}
+            <button class="btn btn-primary btn-sm action" data-phone-number="{{valueForLink}}" data-action="dialSip">拨打</button>
         </div>
     {{/each}}
 {{else}}
