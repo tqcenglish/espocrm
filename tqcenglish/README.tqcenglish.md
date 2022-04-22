@@ -9,4 +9,8 @@ npm install
 nginx -c /Users/tqcenglish/SrcCode/tqcenglish/espocrm/tqcenglish/nginx.conf
 
 cp php.ini /usr/local/etc/php/8.1/php.ini
+
+brew install composer
+
+
 ```
